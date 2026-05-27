@@ -1,0 +1,7 @@
+reference: "../data/reference/genome.fa"
+
+samples: "../samples.tsv"
+
+fastq_dir: "../data/fastq"
+
+results_dir: "results"

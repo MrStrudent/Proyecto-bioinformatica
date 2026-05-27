@@ -1,0 +1,32 @@
+# Datos grandes
+data/fastq/
+data/reference/
+
+# Resultados
+results/
+
+# Snakemake
+.snakemake/
+
+# logs
+*.log
+
+# BAM / VCF
+*.bam
+*.bai
+*.vcf
+*.vcf.gz
+*.tbi
+
+# FASTQ
+*.fastq
+*.fastq.gz
+
+# SRA
+*.sra
+
+# Conda 
+conda-meta/
+
+# VSCode 
+.vscode

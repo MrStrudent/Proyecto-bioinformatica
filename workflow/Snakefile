@@ -1,0 +1,43 @@
+configfile: "../config/config.yaml"
+
+include: "rules/qc.smk"
+include: "rules/align.smk"
+include: "rules/bam.smk"
+include: "rules/variants.smk"
+include: "rules/stats.smk"
+include: "rules/vcf_stats.smk"
+import pandas as pd
+
+samples = pd.read_table(config["samples"])["sample"].tolist()
+
+rule all:
+    input:
+        expand(
+            "../results/qc/{sample}_R1_fastqc.html",
+            sample=samples
+        ),
+        expand(
+            "../results/qc/{sample}_R2_fastqc.html",
+            sample=samples
+        ),
+        "../results/multiqc/multiqc_report.html",
+        expand(
+            "../results/stats/{sample}.flagstat.txt",
+            sample=samples
+        ),
+        expand(
+            "../results/stats/{sample}.stats.txt",
+            sample=samples
+        ),
+        expand(
+            "../results/vcf/{sample}.vcf.gz",
+            sample=samples
+        ),
+        expand(
+            "../results/vcf/{sample}.stats",
+            sample=samples
+        ),
+        expand(
+            "../results/vcf/{sample}.vcf.gz.tbi",
+            sample=samples
+        )
